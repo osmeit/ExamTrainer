@@ -1,4 +1,5 @@
 using ExamTrainer;
+using ExamTrainer.Services;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,10 +18,13 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo
     {
         Title = "EgzamTrainer API",
-        Description = "Making the Pizzas you love",
+        Description = "Making the Exzams you love",
         Version = "v1"
     });
 });
+builder.Services.AddScoped<IExamService, ExamService>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IAnwserService, AnwserService>();
 
 
 
